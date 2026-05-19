@@ -1,23 +1,4 @@
 # -*- coding: utf-8 -*-
-"""
-磁浮列车悬浮系统 —— 问题二：基于准静态平衡假设的完整数学模型 (鲁棒性增强版)
-
-【核心理论基础】
-  准静态平衡假设：附件2数据来自已达到稳态悬浮状态的实验记录
-  初始条件：zf(0) = 0.051m（对应工作间隙 gap = 9mm）
-  目标：验证并使悬浮间隙收敛至工程要求范围 [8mm, 12mm]
-
-【v1.1 鲁棒性增强】
-  - 引入 logging 日志系统（参考 p1_standalone.py 码风）
-  - 数据预处理：Savitzky-Golay 滤波 + IQR 异常值检测
-  - 分布偏移适应：滑动窗口统计 + 在线漂移检测
-  - 系统性鲁棒性测试：噪声注入、参数扰动、极端场景验证
-  - 统一图形管理：FigureManager 类确保输出一致性
-
-版本：v1.1 (Robustness Enhanced)
-日期：2026-05-11
-"""
-
 import os
 import sys
 import logging
@@ -61,21 +42,6 @@ logger = logging.getLogger(__name__)
 
 
 def setup_chinese_font():
-    """
-    统一中文字体配置（参考 model_p3_fusion_v15.py）
-    
-    字体策略:
-      优先级1: SimHei (黑体) - 中文标准字体
-      优先级2: Microsoft YaHei (微软雅黑) - Windows现代字体
-      优先级3: 备用无衬线字体
-    
-    配置项:
-      - 中文字体: SimHei / Microsoft YaHei
-      - 英文字体/数字: Times New Roman (衬线，匹配LaTeX)
-      - 数学字体: DejaVu Sans Math (兼容性最佳)
-      - 坐标轴标签: 统一使用配置字体
-      - 图例字体: 略小于标题，保持可读性
-    """
     font_candidates = [
         'C:/Windows/Fonts/simhei.ttf',
         'C:/Windows/Fonts/msyh.ttc',
