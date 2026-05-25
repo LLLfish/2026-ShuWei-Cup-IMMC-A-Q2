@@ -42,12 +42,14 @@
 **方程推导**(Latex)：
 
 车体运动方程（牛顿第二定律，向上为正）：
-$$M_C \ddot{z}_c = F_k - M_C g = K(z_c - z_f) + C(\dot{z}_c - \dot{z}_f) - M_C g$$
+
+$$M_C \ddot{z}_c = F_k - M_C g = K(z_c - z_f) + C(\dot{z}_c - \dot{z}_f) - M_C g $$
 
 $$\ddot{z}_c = -g + \frac{K(z_c - z_f) + C(\dot{z}_c - \dot{z}_f)}{M_C}$$
 
 悬浮架运动方程：
-$$M_{F,total} \ddot{z}_f = F_{mr}(t) - F_k - M_{F,total} g$$
+
+$$M_{F,total} \ddot{z}_f = F_{mr}(t) - F_k - M_{F,total} g $$
 
 $$\ddot{z}_f = -g + \frac{F_{mr}(t) - K(z_c - z_f) - C(\dot{z}_c - \dot{z}_f)}{M_{F,total}}$$
 
@@ -109,7 +111,7 @@ eigenvalues = np.linalg.eigvals(A)
 **不进行任何数据滤除或清洗**，并将模型仿真起点从t=0平移到t=T_{start}=3.0s。理由：
 
 1. 准静态平衡假设的物理前提是"稳态悬浮"，自然排除起浮及瞬态段
-2. 3.0s后核心数据标准差仅583N，其3σ挠度（$\alpha=0.35$，$K_{gap}=1.15\times10^7$）仅**0.06mm**，远小于9mm可用行程
+2. 3.0s后核心数据标准差仅583N，其3σ挠度($$\alpha=0.35$$ ; $$K_{gap}=1.15\times10^7$$）仅**0.06mm**，远小于9mm可用行程
 3. 保留全部数据完整性，脉冲事件作为间隙-力耦合的物理证据
 
 你发现了吗，我们分析处理后的数据，实际上支撑了假设2“间隙比例微反馈”。这警醒着我们每一个编程手：多看数据，多做处理，多做分析
